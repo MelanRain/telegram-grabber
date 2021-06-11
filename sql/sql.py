@@ -6,11 +6,18 @@ class SQL:
         """Подключение к БД"""
         self.connection = sqlite3.connect(database, check_same_thread=False)
         self.cursor = self.connection.cursor()
+        self.create_table_config()
+        self.create_table_database()
 
     def create_table_config(self):
         """Создание таблицы для хранения каналов"""
         with self.connection:
             return self.cursor.execute("CREATE TABLE IF NOT EXISTS config ('donor', 'moder', 'channel')")
+
+    def create_table_database(self):
+        """Создание таблицы для хранения информации о постах"""
+        with self.connection:
+            return self.cursor.execute("CREATE TABLE IF NOT EXISTS DataBase ('username', 'message_id')")
 
     def message_id_exists(self, username, message_id: int):
         """Проверка есть ли message_id в БД"""
