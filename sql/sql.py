@@ -119,6 +119,7 @@ class SQL:
     def get_moder(self):
         """Возвращает канал модерации"""
         with self.connection:
+            moder = None
             result = self.cursor.execute("SELECT moder FROM config").fetchall()
             for i in result:
                 if i[0] is None:
