@@ -27,7 +27,8 @@ keyboard = InlineKeyboardMarkup(row_width=3)
 donor_k = InlineKeyboardButton(text='Донор', callback_data="donor")
 moder_k = InlineKeyboardButton(text='Модер', callback_data="moder")
 channel_k = InlineKeyboardButton(text='Канал', callback_data="channel")
-keyboard.add(donor_k, moder_k, channel_k)
+print_donor_list = InlineKeyboardButton(text='Вывести список доноров', callback_data='donor_list')
+keyboard.add(donor_k, moder_k, channel_k, print_donor_list)
 
 donor_keyboard = InlineKeyboardMarkup(row_width=2)
 donor_add = InlineKeyboardButton(text='Добавить', callback_data="add_donor")
@@ -142,6 +143,10 @@ async def action(call: types.CallbackQuery, state: FSMContext):
             await bot.send_message(
                 USER_ID, db.delete_channel(data['name']))
             await bot.send_message(USER_ID, restart_session.command_execution())
+
+    elif call.data == 'donor_list':
+        await bot.send_message(
+            USER_ID, db.print_donor())
 
     # await state.finish()
 
