@@ -1,2 +1,2 @@
-Pyrogram==1.0.7
+Pyrogram==1.2.20
 aiogram==2.12.1
