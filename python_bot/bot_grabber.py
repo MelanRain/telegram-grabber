@@ -38,7 +38,7 @@ def send_post(client, message):
 
     send = app.get_messages(username, msg_id)
     # send.forward(bd.get_channel(), as_copy=True)
-    send.copy(eval(bd.get_channel()))
+    send.copy(bd.get_channel())
 
 
 if __name__ == '__main__':

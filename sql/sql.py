@@ -139,6 +139,14 @@ class SQL:
                     channel = i[0]
             return channel
 
+    def print_donor(self):
+        """Возвращает список каналов доноров"""
+        donor_list = []
+        result = self.cursor.execute("SELECT donor FROM config").fetchall()
+        for donor in result:
+            donor_list.append(donor[0])
+        return donor_list
+
     def close(self):
         """Закрываем соединение с БД"""
         self.connection.close()

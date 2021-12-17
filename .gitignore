@@ -4,3 +4,4 @@ others/
 python_bot/bot_python.session
 venv/
 __pycache__/
+bd.db
