@@ -16,7 +16,7 @@ bd = SQL('../bd.db')
 @app.on_message(filters.chat(bd.get_donor()))
 def get_post(client, message):
     username = message.chat.username
-    message_id = message.message_id
+    message_id = message.id
 
     if not bd.message_id_exists(username, message_id):
         bd.add_message_id(username, message_id)
